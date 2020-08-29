@@ -51,13 +51,13 @@ typedef _Ret_maybenull_ _Post_writable_byte_size_(size) void*
 /// returned by the app's corresponding HCMemAllocFunction such that the application can free the
 /// memory buffer.
 /// </summary>
-/// <param name="pointer">The pointer to the memory buffer previously allocated. This value will
+/// <param name="pointer">The pointer reference to the memory buffer previously allocated. This value will
 /// never be a null pointer.</param>
 /// <param name="memoryType">An opaque identifier representing the internal category of 
 /// memory being allocated.</param>
 typedef void
 (STDAPIVCALLTYPE* HCMemFreeFunction)(
-    _In_ _Post_invalid_ void* pointer,
+    _In_ _Post_invalid_ void*& pointer,
     _In_ HCMemoryType memoryType
     );
 

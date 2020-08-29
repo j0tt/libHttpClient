@@ -16,12 +16,13 @@ DefaultMemAllocFunction(
 
 void STDAPIVCALLTYPE 
 DefaultMemFreeFunction(
-    _In_ _Post_invalid_ void* pointer,
+    _In_ _Post_invalid_ void*& pointer,
     _In_ HCMemoryType memoryType
     )
 {
     UNREFERENCED_PARAMETER(memoryType);
     free(pointer);
+    pointer = nullptr;
 }
 
 HCMemAllocFunction g_memAllocFunc = DefaultMemAllocFunction;
@@ -45,7 +46,7 @@ HCMemSetFunctions(
 
 STDAPI 
 HCMemGetFunctions(
-    _Out_ HCMemAllocFunction* memAllocFunc,
+    _Out_ HCMemAllocFunction*& memAllocFunc,
     _Out_ HCMemFreeFunction* memFreeFunc
     ) noexcept
 {

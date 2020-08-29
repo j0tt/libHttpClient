@@ -33,7 +33,7 @@ inline T* Make(TArgs&&... args)
 }
 
 template<typename T>
-inline void Delete(T* ptr)
+inline void Delete(T*& ptr)
 {
     if (ptr != nullptr)
     {
